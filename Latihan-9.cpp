@@ -1,60 +1,55 @@
-//08:12 - 08:37 (BELUM BERHASIL)
-
 #include <iostream>
 
 void merge(int ar[], int left, int middle, int right){
-    int n1 = middle - left + 1;
-    int n2 = right - middle;
+    int size_left = middle - left + 1;
+    int size_right = right - middle;
 
-    int arLeft[n1], arRight[n2];
+    int arLeft[size_left], arRight[size_right];
 
-    for (int i = 0; i < n1; i++) {
-        arLeft[i] = ar[left + i];
-    }
-
-    for (int i = 0; i < n2; i++) {
-        arRight[i] = ar[middle + 1 + i];
-    }
+    for (int i = 0; i < size_left; i++) arLeft[i] = ar[left + i];
+    for (int i = 0; i < size_right; i++) arRight[i] = ar[middle + 1 + i];
 
     int i = 0, j = 0, k = left;
 
-    while (i < n1 && j < n2) {
-        if (arLeft[i] > arRight[j]) {
+    while (i < size_left && j < size_right) {
+        if (arLeft[i] <= arRight[j]) {
             ar[k] = arLeft[i];
             i++;
-        } else {
+        }
+        else
+        {
             ar[k] = arRight[j];
             j++;
         }
         k++;
-        std::cout << "BERHASIL" << std::endl;
     }
 
-    while (i < n1) {
+    while (i < size_left) {
         ar[k] = arLeft[i];
         i++;
         k++;
-        std::cout << "BERHASIL" << std::endl;
     }
 
-    while (j < n2) {
+    while (j < size_right) {
         ar[k] = arRight[j];
         j++;
         k++;
-        std::cout << "BERHASIL" << std::endl;
     }
+
+
 }
 
-void mergeSort (int ar[], int left, int right) {
+void merge_sort(int ar[], int left, int right){
     if (left >= right) return;
-    int middle = (right - left)/2;
-    
-    mergeSort(ar, left, middle);
-    mergeSort(ar, middle + 1, right);
+
+    int middle = left + (right - left) / 2;
+
+    merge_sort(ar, left, middle);
+    merge_sort(ar, middle + 1, right);
     merge(ar, left, middle, right);
 }
 
-int main() {
+int main(){
 
     int n;
     std::cin >> n;
@@ -64,7 +59,7 @@ int main() {
         std::cin >> ar[i];
     }
 
-    mergeSort(ar, 0, n - 1);
+    merge_sort(ar, 0, n - 1);
 
     for (int i = 0; i < n; i++) {
         std::cout << ar[i] << " ";
