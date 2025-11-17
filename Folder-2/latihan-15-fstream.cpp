@@ -31,6 +31,9 @@ int main() {
                     << peserta_baru.nama_peserta << endl
                     << peserta_baru.nama_lomba << endl
                     << "=========================\n";
+                
+        char x = whatever.get();
+        cout << x;
 
         whatever.close();
     }

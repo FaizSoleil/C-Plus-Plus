@@ -6,7 +6,7 @@ Akan meng-output ASCII S dengan ukuran ukuran sesuai input
 
 void printHorizontal(int size);
 void printVertikalKanan(int size);
-void printVertikalKanan(int size);
+void printVertikalKiri(int size);
 
 int main(){
     int size;

@@ -1,7 +1,6 @@
 #include <iostream>
 
 void counting_sort(int ar[], int n);
-
 void print_array(int ar[], int n);
 
 int main() {
@@ -49,9 +48,12 @@ void counting_sort(int ar[], int n){
         // print_array(output, n);
     }
 
-    for (int i = 0; i < n; i++)
-        ar[i] = output[i];
+    for (int i = 0; i < n; i++){
+        int j = n - i - 1;
+        ar[i] = output[j];
+        j--;
         // print_array(ar, n);
+    }
 }
 
 
